@@ -1,5 +1,6 @@
 using Lesson3_CNLTWeb.Data;
 using Lesson3_CNLTWeb.Middleware;
+using Lesson3_CNLTWeb.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BookDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BookManagement")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("BookManagement"),
+        sqlOptions => sqlOptions.EnableRetryOnFailure(maxRetryCount: 3)));
+
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 var app = builder.Build();
 

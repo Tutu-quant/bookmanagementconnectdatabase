@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\Downloads\\Lesson3-CNLTWeb-master\\Lesson3-CNLTWeb.csproj": {}
+    "D:\\Bài tập công nghệ lập trình web\\bookmanagementconnectdatabase\\Lesson3-CNLTWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\Downloads\\Lesson3-CNLTWeb-master\\Lesson3-CNLTWeb.csproj": {
+    "D:\\Bài tập công nghệ lập trình web\\bookmanagementconnectdatabase\\Lesson3-CNLTWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\Lesson3-CNLTWeb-master\\Lesson3-CNLTWeb.csproj",
+        "projectUniqueName": "D:\\Bài tập công nghệ lập trình web\\bookmanagementconnectdatabase\\Lesson3-CNLTWeb.csproj",
         "projectName": "Lesson3-CNLTWeb",
-        "projectPath": "C:\\Users\\ADMIN\\Downloads\\Lesson3-CNLTWeb-master\\Lesson3-CNLTWeb.csproj",
+        "projectPath": "D:\\Bài tập công nghệ lập trình web\\bookmanagementconnectdatabase\\Lesson3-CNLTWeb.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Downloads\\Lesson3-CNLTWeb-master\\obj\\",
+        "outputPath": "D:\\Bài tập công nghệ lập trình web\\bookmanagementconnectdatabase\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -19,7 +19,7 @@ namespace Lesson3_CNLTWeb.Data
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
                 entity.Property(e => e.Name).HasMaxLength(255);
-                entity.Property(e => e.Price);
+                entity.Property(e => e.Price).HasColumnType("float");
             });
         }
     }

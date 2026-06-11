@@ -1,30 +1,29 @@
-using Lesson3_CNLTWeb.Data;
 using Lesson3_CNLTWeb.Models;
+using Lesson3_CNLTWeb.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Lesson3_CNLTWeb.Controllers
 {
     public class BookController : Controller
     {
-        private readonly BookDbContext _context;
+        private readonly IBookRepository _bookRepository;
 
-        public BookController(BookDbContext context)
+        public BookController(IBookRepository bookRepository)
         {
-            _context = context;
+            _bookRepository = bookRepository;
         }
 
         // READ - Danh sách sách
         public async Task<IActionResult> Index()
         {
-            var books = await _context.Books.ToListAsync();
+            var books = await _bookRepository.GetAllAsync();
             return View(books);
         }
 
         // READ - Chi tiết sách
         public async Task<IActionResult> Detail(int id)
         {
-            var book = await _context.Books.FindAsync(id);
+            var book = await _bookRepository.GetByIdAsync(id);
             if (book == null)
             {
                 return NotFound();
@@ -49,8 +48,7 @@ namespace Lesson3_CNLTWeb.Controllers
                 return View(book);
             }
 
-            _context.Books.Add(book);
-            await _context.SaveChangesAsync();
+            await _bookRepository.AddAsync(book);
 
             TempData["SuccessMessage"] = "Thêm sách thành công!";
             return RedirectToAction(nameof(Index));
@@ -59,7 +57,7 @@ namespace Lesson3_CNLTWeb.Controllers
         // UPDATE - Hiển thị form sửa
         public async Task<IActionResult> Edit(int id)
         {
-            var book = await _context.Books.FindAsync(id);
+            var book = await _bookRepository.GetByIdAsync(id);
             if (book == null)
             {
                 return NotFound();
@@ -83,8 +81,12 @@ namespace Lesson3_CNLTWeb.Controllers
                 return View(book);
             }
 
-            _context.Books.Update(book);
-            await _context.SaveChangesAsync();
+            if (!await _bookRepository.ExistsAsync(id))
+            {
+                return NotFound();
+            }
+
+            await _bookRepository.UpdateAsync(book);
 
             TempData["SuccessMessage"] = "Cập nhật sách thành công!";
             return RedirectToAction(nameof(Index));
@@ -93,7 +95,7 @@ namespace Lesson3_CNLTWeb.Controllers
         // DELETE - Hiển thị xác nhận xóa
         public async Task<IActionResult> Delete(int id)
         {
-            var book = await _context.Books.FindAsync(id);
+            var book = await _bookRepository.GetByIdAsync(id);
             if (book == null)
             {
                 return NotFound();
@@ -107,11 +109,9 @@ namespace Lesson3_CNLTWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var book = await _context.Books.FindAsync(id);
-            if (book != null)
+            if (await _bookRepository.ExistsAsync(id))
             {
-                _context.Books.Remove(book);
-                await _context.SaveChangesAsync();
+                await _bookRepository.DeleteAsync(id);
                 TempData["SuccessMessage"] = "Xóa sách thành công!";
             }
 

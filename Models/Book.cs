@@ -12,6 +12,6 @@ namespace Lesson3_CNLTWeb.Models
 
         [Range(0.01, double.MaxValue, ErrorMessage = "Giá phải lớn hơn 0")]
         [Display(Name = "Giá")]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
     }
 }

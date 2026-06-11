@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lesson3-CNLTWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc8a16bbb95ca95ffdb9776982a7eb6ba314f966")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lesson3-CNLTWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lesson3-CNLTWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
